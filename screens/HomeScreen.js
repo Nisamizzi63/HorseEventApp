@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, FontAwesome5, FontAwesome } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
+  const route = useRoute();
+  const user = route.params?.user; // { id, userName, email } fra login
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -16,31 +18,33 @@ export default function HomeScreen() {
 
         {/* Welcome message */}
         <View style={styles.welcomeContainer}>
-          <Text style={styles.welcomeText}>Velkommen, gæst!</Text>
+          <Text style={styles.welcomeText}>
+            {user ? `Velkommen, ${user.userName}!` : 'Velkommen, gæst!'}
+          </Text>
           <Text style={styles.subText}>Hvad har du lyst til i dag?</Text>
         </View>
 
         {/* Grid buttons */}
         <View style={styles.grid}>
-          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Profile')}>
-            <Ionicons name="person-circle-outline" size={40} color="#7c3aed" />
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Profil')}>
+            <Ionicons name="person-circle-outline" size={40} color="#aa7df7ff" />
             <Text style={styles.cardText}>Profil</Text>
             <Text style={styles.cardSubText}>Ændre konto</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Chatbot')}>
-            <MaterialCommunityIcons name="robot-outline" size={40} color="#7c3aed" />
+            <MaterialCommunityIcons name="robot-outline" size={40} color="#aa7df7ff"/>
             <Text style={styles.cardText}>Chatbotten</Text>
             <Text style={styles.cardSubText}>Chat med vores AI chatbot</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Horses')}>
-            <FontAwesome5 name="horse" size={40} color="#7c3aed" />
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Heste')}>
+            <FontAwesome5 name="horse" size={40} color="#aa7df7ff" />
             <Text style={styles.cardText}>Heste</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Events')}>
-            <FontAwesome name="trophy" size={40} color="#7c3aed" />
+            <FontAwesome name="trophy" size={40} color="#8844ffff" />
             <Text style={styles.cardText}>Stævner</Text>
           </TouchableOpacity>
         </View>
@@ -83,13 +87,11 @@ const styles = StyleSheet.create({
     paddingBottom: 80, // space for navbar and back button
   },
   header: {
-    backgroundColor: '#0881ebff',
-    paddingVertical: 30,
+    backgroundColor: '#4099e6ff',
+    paddingVertical: 20,
     paddingHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
   },
   headerText: {
     fontSize: 24,
@@ -159,12 +161,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 25,
-    backgroundColor: '#7c3aed',
+    backgroundColor: '#8656d8ff',
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
+    paddingVertical: 20,
+    paddingHorizontal: 20
   },
 });

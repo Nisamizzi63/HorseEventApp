@@ -1,30 +1,163 @@
-import React from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native';
+import { useAuth } from '../AuthContext';
+
+const API_BASE_URL = 'http://10.0.0.7:5068';
 
 export default function LoginScreen({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { setUser } = useAuth();
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert('Fejl', 'Udfyld både email og password.');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/User/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: email,
+          password: password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Forkert email eller password');
+      }
+
+      const user = await response.json();
+
+      setUser({
+        id: user.id,
+        name: user.userName,
+        email: user.email,
+      });
+
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      });
+    } catch (err) {
+      Alert.alert('Login fejlede', err.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Log In</Text>
+      {/* Top dark patterned background */}
+      <View style={styles.header}>
+      <Image
+        source={require('../assets/ChildRiding.png')} 
+        style={styles.logo}
+        resizeMode="contain"
 
-      <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" />
-      <TextInput style={styles.input} placeholder="Password" secureTextEntry />
+      />
+      </View>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
+      
 
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text style={styles.backText}>Back</Text>
-      </TouchableOpacity>
+      {/* White rounded card */}
+      <View style={styles.card}>
+        <Text style={styles.title}>Lad os starte!</Text>
+
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#7A7A7A"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor="#7A7A7A"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Log in</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.backText}>Tilbage</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', padding: 20 },
-  title: { fontSize: 24, textAlign: 'center', marginBottom: 20 },
-  input: { borderWidth: 1, borderColor: '#ccc', padding: 12, borderRadius: 8, marginBottom: 15 },
-  button: { backgroundColor: '#A020F0', padding: 15, borderRadius: 10 },
-  buttonText: { color: '#fff', textAlign: 'center' },
-  backText: { marginTop: 10, textAlign: 'center', color: '#4285F4' }
+
+  
+  container: {
+    flex: 1,
+    backgroundColor: '#54a49bff', 
+  },
+
+  header: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  logo: {
+    width: 200,
+    height: 400,
+  },
+
+  card: {
+    flex: 3,
+    backgroundColor: '#FFFFFF',
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    padding: 30,
+  },
+
+  title: {
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#000',
+    marginBottom: 25,
+    textAlign: 'center',
+  },
+
+  input: {
+    width: '100%',
+    padding: 15,
+    marginBottom: 15,
+    borderRadius: 12,
+    backgroundColor: '#F2F2F2',
+    borderWidth: 1,
+    borderColor: '#DDD',
+  },
+  
+  button: {
+    backgroundColor: '#dd94f5ff', 
+    padding: 15,
+    borderRadius: 12,
+    marginTop: 10,
+  },
+
+  buttonText: {
+    color: '#FFF',
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+
+  backText: {
+    color: '#549F93',
+    textAlign: 'center',
+    marginTop: 15,
+    fontSize: 16,
+  },
 });

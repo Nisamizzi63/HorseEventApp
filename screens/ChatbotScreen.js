@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// src/screens/ChatbotScreen.jsx
+import React, { useState, useRef } from "react";
 import {
   View,
   Text,
@@ -9,60 +10,85 @@ import {
   SafeAreaView,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
+// 🔗 BACKEND URL — change this for your setup
+// const BASE_URL = "http://10.0.2.2:8000";        // Android emulator
+// const BASE_URL = "http://127.0.0.1:8000";       // iOS simulator (Mac)
+const BASE_URL = "http://10.0.0.7:8000";       // Physical device (your PC LAN IP)
+
 export default function ChatbotScreen() {
   const navigation = useNavigation();
-
   const [messages, setMessages] = useState([
     {
-      id: "1",
+      id: "welcome",
       sender: "bot",
-      text: "Hej 👋 Jeg er din HorseEvent AI-assistent.\nStil mig et spørgsmål om PDF’en!",
+      text:
+        "Hej 👋 Jeg er din HorseEvent AI-assistent.\n" +
+        "Hvad skal vi snakke om idag?",
     },
   ]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const listRef = useRef(null);
 
-  const sendMessage = async () => {
-    if (!input.trim()) return;
+  function scrollToEnd() {
+    requestAnimationFrame(() => {
+      listRef.current?.scrollToEnd({ animated: true });
+    });
+  }
 
-    const newMessage = {
-      id: Date.now().toString(),
-      sender: "user",
-      text: input,
-    };
-    setMessages((prev) => [...prev, newMessage]);
+  async function sendMessage() {
+    const text = input.trim();
+    if (!text || loading) return;
+
+    const userMsg = { id: String(Date.now()), sender: "user", text };
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
+    setLoading(true);
+    scrollToEnd();
 
     try {
-      const res = await fetch("http://192.168.226.239:8000/ask", {
+      const res = await fetch(`${BASE_URL}/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: input }),
+        body: JSON.stringify({ question: text }),
       });
 
-      const data = await res.json();
-      const reply = data.reply || data.snippet || "Jeg kunne ikke finde et svar 🤔";
+      // If backend isn’t reachable or returns non-2xx
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
 
-      const botMessage = {
-        id: Date.now().toString(),
-        sender: "bot",
-        text: reply,
-      };
-      setMessages((prev) => [...prev, botMessage]);
-    } catch (error) {
+      const data = await res.json();
+      // 👇 IMPORTANT: backend returns { answer: "..." }
+      const reply = data?.answer?.trim?.() || "Jeg kunne ikke finde et svar 🤔";
+
+      const botMsg = { id: String(Date.now() + 1), sender: "bot", text: reply };
+      setMessages((prev) => [...prev, botMsg]);
+      scrollToEnd();
+    } catch (err) {
+      console.error("Chat error:", err);
       setMessages((prev) => [
         ...prev,
         {
-          id: Date.now().toString(),
+          id: String(Date.now() + 2),
           sender: "bot",
-          text: "⚠️ Kunne ikke forbinde til serveren.",
+          text:
+            "⚠️ Jeg kunne ikke forbinde til serveren.\n" +
+            "Tjek at backenden kører på " +
+            BASE_URL +
+            " og at din telefon/emulator er på samme netværk.",
         },
       ]);
+      scrollToEnd();
+    } finally {
+      setLoading(false);
     }
-  };
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -78,8 +104,10 @@ export default function ChatbotScreen() {
         keyboardVerticalOffset={80}
       >
         <FlatList
+          ref={listRef}
           data={messages}
           keyExtractor={(item) => item.id}
+          contentContainerStyle={{ paddingVertical: 8 }}
           renderItem={({ item }) => (
             <View
               style={[
@@ -90,18 +118,31 @@ export default function ChatbotScreen() {
               <Text style={styles.msgText}>{item.text}</Text>
             </View>
           )}
+          onContentSizeChange={scrollToEnd}
+          onLayout={scrollToEnd}
         />
 
-        {/* Input box */}
+        {/* Input */}
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             placeholder="Skriv dit spørgsmål..."
             value={input}
             onChangeText={setInput}
+            editable={!loading}
+            onSubmitEditing={sendMessage}
+            returnKeyType="send"
           />
-          <TouchableOpacity onPress={sendMessage} style={styles.sendButton}>
-            <Ionicons name="send" size={20} color="white" />
+          <TouchableOpacity
+            onPress={sendMessage}
+            style={[styles.sendButton, loading && { opacity: 0.6 }]}
+            disabled={loading}
+          >
+            {loading ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Ionicons name="send" size={20} color="white" />
+            )}
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
@@ -172,6 +213,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#7c3aed",
     padding: 12,
     borderRadius: 50,
+    minWidth: 44,
+    minHeight: 44,
+    alignItems: "center",
+    justifyContent: "center",
   },
   navbar: {
     flexDirection: "row",

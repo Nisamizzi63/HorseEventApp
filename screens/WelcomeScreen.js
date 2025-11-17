@@ -1,31 +1,42 @@
+// screens/WelcomeScreen.js
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import HeaderImage from '../components/layout/HeaderImage';
+import BottomCard from '../components/layout/BottomCard';
+import AppButton from '../components/layout/AppButton';
+import colors from '../components/colors/colors';
 
 export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/horse.png')} style={styles.image} />
+      <HeaderImage source={require('../assets/ChildRiding.png')} />
 
-      <Text style={styles.title}>
-        Velkommen til{'\n'}
-        <Text style={{ fontWeight: 'bold' }}>StævnePortalen</Text>
-      </Text>
+      <BottomCard>
+        <Text style={styles.welcome}>Velkommen til</Text>
+        <Text style={styles.appName}>HorseEvent</Text>
 
-      <TouchableOpacity style={styles.buttonBlue} onPress={() => navigation.navigate('Signup')}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
+        <AppButton
+          title="Registrere dig"
+          variant="primary"
+          onPress={() => navigation.navigate('Signup')}
+        />
 
-      <TouchableOpacity style={styles.buttonPurple} onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.buttonText}>Log In</Text>
-      </TouchableOpacity>
+        <AppButton
+          title="Log Ind"
+          variant="secondary"
+          onPress={() => navigation.navigate('Login')}
+        />
 
-      <TouchableOpacity style={styles.buttonGuest} onPress={() => navigation.navigate('Home')}>
-        <Text style={styles.buttonGuestText}>Continue as Guest</Text>
-      </TouchableOpacity>
+        <AppButton
+          title="Fortsæt som gæst"
+          variant="outline"
+          onPress={() => navigation.navigate('Home')}
+        />
 
-      <Text style={styles.terms}>
-        By continuing, you agree to our Terms of Service and Privacy Policy
-      </Text>
+        <Text style={styles.terms}>
+          By continuing, you agree to our Terms of Service and Privacy Policy
+        </Text>
+      </BottomCard>
     </View>
   );
 }
@@ -33,56 +44,23 @@ export default function WelcomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20
+    backgroundColor: colors.teal,
   },
-  image: {
-    width: 200,
-    height: 200,
-    resizeMode: 'contain'
+  welcome: {
+    fontSize: 20,
+    color: colors.grayDark,
   },
-  title: {
-    fontSize: 24,
-    textAlign: 'center',
-    marginVertical: 20
-  },
-  buttonBlue: {
-    backgroundColor: '#4285F4',
-    padding: 15,
-    borderRadius: 10,
-    width: '80%',
-    marginBottom: 10
-  },
-  buttonPurple: {
-    backgroundColor: '#A020F0',
-    padding: 15,
-    borderRadius: 10,
-    width: '80%'
-  },
-  buttonGuest: {
-    marginTop: 15,
-    padding: 12,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#aaa',
-    width: '80%'
-  },
-  buttonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontSize: 16
-  },
-  buttonGuestText: {
-    textAlign: 'center',
-    color: '#444',
-    fontSize: 16
+  appName: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 25,
+    color: '#000',
   },
   terms: {
-    marginTop: 20,
+    marginTop: 18,
     textAlign: 'center',
     fontSize: 12,
-    color: '#555'
-  }
+    color: colors.grayMid,
+  },
 });
 
