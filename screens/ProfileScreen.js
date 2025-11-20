@@ -15,7 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../AuthContext';
 
-const API_BASE_URL = 'http://10.0.0.7:5068'; 
+const API_BASE_URL = 'http://172.20.10.13:5068'; 
 
 
 export default function ProfileScreen() {

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { useAuth } from '../AuthContext';
 
-const API_BASE_URL = 'http://10.0.0.7:5068';
+const API_BASE_URL = 'http://172.20.10.13:5068';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
@@ -54,7 +55,6 @@ export default function LoginScreen({ navigation }) {
         source={require('../assets/ChildRiding.png')} 
         style={styles.logo}
         resizeMode="contain"
-
       />
       </View>
 

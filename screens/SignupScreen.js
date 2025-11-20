@@ -10,7 +10,7 @@ import BottomAuthText from '../components/layout/BottomAuthText';
 import colors from '../components/colors/colors';
 
 
-const API_BASE_URL = "http://10.0.0.7:5068";
+const API_BASE_URL = 'http://172.20.10.13:5068';
 const CREATE_USER_URL = `${API_BASE_URL}/api/User`;
 
 export default function SignupScreen({ navigation }) {
