@@ -5,11 +5,11 @@ import palette from '../../colors/palette';
 
 const BottomMenuNavBar = ({ navigation }) => (
   <View style={styles.navbar}>
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
       <Ionicons name="home" size={24} color={palette.white} />
     </TouchableOpacity>
 
-    <TouchableOpacity onPress={() => navigation.navigate('Events')}>
+    <TouchableOpacity onPress={() => {}}>
       <Ionicons name="calendar" size={24} color={palette.white} />
     </TouchableOpacity>
 
