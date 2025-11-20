@@ -2,7 +2,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-import palette from '../colors/palette';
+import palette from '../../colors/palette';
 
 const SmallCard = ({ label, value, onPress, style }) => (
   <TouchableOpacity style={[styles.smallCard, style]} onPress={onPress}>

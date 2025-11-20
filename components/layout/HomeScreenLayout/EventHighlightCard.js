@@ -1,14 +1,14 @@
 // components/EventHighlightCard.js
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import palette from '../colors/palette';
+import palette from '../../colors/palette';
 
 
 const EventHighlightCard = ({ title, date, onPress }) => (
   <TouchableOpacity style={styles.eventCard} onPress={onPress}>
     <View style={styles.eventImageWrapper}>
       <Image
-        source={require('../../assets/KidsRacing.jpg')} // just adjust path if needed
+        source={require('../../../assets/KidsRacing.jpg')} // just adjust path if needed
         style={styles.eventImage}
       />
     </View>

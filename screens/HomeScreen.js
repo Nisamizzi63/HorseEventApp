@@ -15,9 +15,9 @@ import BottomMenuNavBar from '../components/layout/SharedLayout/BottomMenuNavBar
 import palette from '../components/colors/palette';
 
 
-import SmallCard from '../components/layout/SmallCard';
-import EventHighlightCard from '../components/layout/EventHighlightCard';
-import MenuCard from '../components/layout/MenuCard';
+import SmallCard from '../components/layout/HomeScreenLayout/SmallCard';
+import EventHighlightCard from '../components/layout/HomeScreenLayout/EventHighlightCard';
+import MenuCard from '../components/layout/HomeScreenLayout/MenuCard';
 
 export default function HomeScreen() {
   const navigation = useNavigation();

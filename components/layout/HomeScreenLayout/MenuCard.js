@@ -1,7 +1,7 @@
 // components/MenuCard.js
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
-import palette from '../colors/palette';
+import palette from '../../colors/palette';
 
 const MenuCard = ({ title, subtitle, icon, onPress }) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
