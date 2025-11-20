@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import palette from '../colors/palette';
+import palette from '../../colors/palette';
 
 export default function ChatInputBar({
   value,

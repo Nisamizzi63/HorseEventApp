@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import palette from '../colors/palette';
+import palette from '../../colors/palette';
 
 export default function ChatbotHeader() {
   return (

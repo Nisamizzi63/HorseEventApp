@@ -9,13 +9,15 @@ import {
 import { Ionicons, MaterialCommunityIcons, FontAwesome5, FontAwesome } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-//Layout of farve imports
+//Shared Layout
+import Header from '../components/layout/SharedLayout/Header';
+import BottomMenuNavBar from '../components/layout/SharedLayout/BottomMenuNavBar';
 import palette from '../components/colors/palette';
-import Header from '../components/layout/Header';
+
+
 import SmallCard from '../components/layout/SmallCard';
 import EventHighlightCard from '../components/layout/EventHighlightCard';
 import MenuCard from '../components/layout/MenuCard';
-import BottomMenuNavBar from '../components/layout/BottomMenuNavBar';
 
 export default function HomeScreen() {
   const navigation = useNavigation();

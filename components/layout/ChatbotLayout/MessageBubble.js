@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import palette from '../colors/palette';
+import palette from '../../colors/palette';
 
 export default function MessageBubble({ sender, text }) {
   const isUser = sender === 'user';

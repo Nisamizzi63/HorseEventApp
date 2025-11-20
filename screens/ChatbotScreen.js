@@ -1,4 +1,3 @@
-// screens/ChatbotScreen.jsx
 import React, { useState, useRef } from 'react';
 import {
   View,
@@ -9,15 +8,16 @@ import {
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
+//Shared Layout
 import palette from '../components/colors/palette';
-import Header from '../components/layout/Header';
-import BottomMenuNavBar from '../components/layout/BottomMenuNavBar';
+import Header from '../components/layout/SharedLayout/Header';
+import BottomMenuNavBar from '../components/layout/SharedLayout/BottomMenuNavBar';
 
-import ChatbotHeader from '../components/layout/ChatbotHeader';
-import ChatMessageList from '../components/layout/ChatMessageList';
-import ChatInputBar from '../components/layout/ChatInputBar';
+//Chatbotlayout
+import ChatbotHeader from '../components/layout/ChatbotLayout/ChatbotHeader';
+import ChatMessageList from '../components/layout/ChatbotLayout/ChatMessageList';
+import ChatInputBar from '../components/layout/ChatbotLayout/ChatInputBar';
 
-// 👇 Use the constant you actually defined
 const API_BASE_URL = 'http://172.20.10.13:5068';
 
 export default function ChatbotScreen() {

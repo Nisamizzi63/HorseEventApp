@@ -8,7 +8,8 @@ import {
   Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import palette from '../colors/palette';
+import palette from '../../colors/palette';
+
 
 const Header = ({ userName, subtitle, onBack, onProfile }) => (
   <View style={styles.headerRow}>
@@ -17,7 +18,7 @@ const Header = ({ userName, subtitle, onBack, onProfile }) => (
       <View style={styles.logoRow}>
         <View style={styles.logoCircle}>
           <Image
-            source={require('../../assets/LogoHest.png')}
+            source={require('../../../assets/LogoHest.png')}
             style={styles.logoImage}
             resizeMode="contain"
           />
