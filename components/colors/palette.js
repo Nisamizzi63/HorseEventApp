@@ -1,6 +1,6 @@
 const palette = {
   lightblue: 'rgba(162, 183, 205, 1)', 
-  white: '#c5dae7ff', 
+  white: '#ffffffff', 
   darkblue: '#000038ff', 
   pink: '#cb6eabff',
   purple: '#5f3a61ff',

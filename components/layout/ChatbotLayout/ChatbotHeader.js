@@ -7,8 +7,8 @@ import palette from '../../colors/palette';
 export default function ChatbotHeader() {
   return (
     <LinearGradient
-      colors={[palette.lightpink, palette.lightblue]}
-      start={{ x: 0, y: 0 }}
+      colors={[palette.lightblue, palette.darkblue]}
+      start={{ x: 0, y: 4 }}
       end={{ x: 1, y: 1 }}
       style={styles.fancyHeader}
     >
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
   fancyTitle: {
     fontSize: 25,
     fontWeight: '700',
-    color: palette.cyanSoft,
+    color: palette.lightpink,
   },
 });

@@ -11,7 +11,6 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 //Shared Layout
 import palette from '../components/colors/palette';
 import Header from '../components/layout/SharedLayout/Header';
-import BottomMenuNavBar from '../components/layout/SharedLayout/BottomMenuNavBar';
 
 //Chatbotlayout
 import ChatbotHeader from '../components/layout/ChatbotLayout/ChatbotHeader';
@@ -103,7 +102,7 @@ export default function ChatbotScreen() {
       <KeyboardAvoidingView
         style={styles.keyboardWrapper}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={-90}
+        keyboardVerticalOffset={0}
       >
         {/* Global header (som på HomeScreen) */}
         <View style={styles.headerWrapper}>
@@ -139,8 +138,6 @@ export default function ChatbotScreen() {
           />
         </View>
 
-        {/* Fælles bottom navbar */}
-        <BottomMenuNavBar navigation={navigation} />
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -168,7 +165,6 @@ const styles = StyleSheet.create({
     backgroundColor: palette.lightblue,
     marginHorizontal: 20,
     marginTop: 4,
-    marginBottom: 90, // plads til bottom navbar
     borderRadius: 20,
     padding: 12,
     shadowColor: '#000',
