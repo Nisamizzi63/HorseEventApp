@@ -10,12 +10,14 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import palette from '../../colors/palette';
 
-
 const Header = ({ userName, subtitle, onBack, onProfile }) => (
   <View style={styles.headerRow}>
-    {/* LEFT SIDE: logo + title + subtitle */}
+
+    {/* LEFT SIDE */}
     <View style={styles.headerLeft}>
       <View style={styles.logoRow}>
+
+        {/* Logo */}
         <View style={styles.logoCircle}>
           <Image
             source={require('../../../assets/LogoHest.png')}
@@ -24,18 +26,21 @@ const Header = ({ userName, subtitle, onBack, onProfile }) => (
           />
         </View>
 
-        <Text style={styles.headerTitle}>HorseEvent</Text>
-        
-      </View>
+        {/* Title column: HorseEvent + velkommen under */}
+        <View style={styles.titleColumn}>
+          <Text style={styles.headerTitle}>HorseEvent</Text>
 
-      {subtitle ? (
-        <Text style={styles.welcomeText}>{subtitle}</Text>
-      ) : userName ? (
-        <Text style={styles.welcomeText}>Velkommen, {userName} 👋</Text>
-      ) : null}
+          {subtitle ? (
+            <Text style={styles.welcomeText}>{subtitle}</Text>
+          ) : userName ? (
+            <Text style={styles.welcomeText}>Velkommen, {userName} 👋</Text>
+          ) : null}
+        </View>
+
+      </View>
     </View>
 
-    {/* Højere side navigation */}
+    {/* RIGHT SIDE */}
     <View style={styles.headerRight}>
       <TouchableOpacity style={styles.iconCircle} onPress={onBack}>
         <Ionicons name="chevron-back" size={18} color={palette.lightpink} />
@@ -52,6 +57,7 @@ const Header = ({ userName, subtitle, onBack, onProfile }) => (
         />
       </TouchableOpacity>
     </View>
+
   </View>
 );
 
@@ -68,11 +74,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  // logo
   logoRow: {
     flexDirection: 'row',
     alignItems: 'center',
   },
+
   logoCircle: {
     width: 40,
     height: 40,
@@ -82,28 +88,37 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 6,
   },
+
   logoImage: {
     width: 50,
     height: 35,
-    tintColor: '#cb6eabff', 
+    tintColor: '#cb6eabff',
+  },
+
+  /* NEW: vertical column */
+  titleColumn: {
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
 
   headerTitle: {
     color: palette.cyanSoft,
-    textShadowRadius: 50,
     fontSize: 18,
     fontWeight: '700',
-    marginTop: 1,
+    marginBottom: -2,   // pulls welcome text closer
   },
+
   welcomeText: {
     color: palette.darkblue,
-    marginTop: 4,
     fontSize: 13,
+    marginTop: 0,       // keeps it snug under the title
   },
+
   headerRight: {
     flexDirection: 'row',
     alignItems: 'center',
   },
+
   iconCircle: {
     width: 34,
     height: 34,
@@ -113,4 +128,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
