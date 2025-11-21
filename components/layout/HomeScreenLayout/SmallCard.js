@@ -14,18 +14,18 @@ const SmallCard = ({ label, value, onPress, style }) => (
 const styles = StyleSheet.create({
   smallCard: {
     flex: 1,
-    backgroundColor: palette.Transparent,
+    backgroundColor: palette.darkblue,
     paddingVertical: 14,
     paddingHorizontal: 14,
     borderRadius: 18,
     justifyContent: 'center',
   },
   smallCardLabel: {
-    color: palette.white,
+    color: palette.lightpink,
     fontSize: 12,
   },
   smallCardValue: {
-    color: palette.white,
+    color: palette.lightpink,
     fontSize: 14,
     fontWeight: '600',
     marginTop: 4,

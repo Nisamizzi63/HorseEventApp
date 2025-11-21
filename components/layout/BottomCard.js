@@ -9,7 +9,7 @@ export default function BottomCard({ children }) {
 const styles = StyleSheet.create({
   card: {
     flex: 2,
-    backgroundColor: palette.white,
+    backgroundColor: palette.lightpink,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     paddingHorizontal: 30,

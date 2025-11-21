@@ -14,7 +14,7 @@ const MenuCard = ({ title, subtitle, icon, onPress }) => (
 const styles = StyleSheet.create({
   card: {
     width: '48%',
-    backgroundColor: palette.lightblue,
+    backgroundColor: palette.lightblue, 
     borderRadius: 20,
     paddingVertical: 18,
     paddingHorizontal: 14,
@@ -24,13 +24,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: palette.white,
+    backgroundColor: palette.lightpink,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10,
   },
   cardTitle: {
-    color: palette.cyanSoft,
+    color: palette.darkblue,
     fontSize: 15,
     fontWeight: '600',
     marginBottom: 2,

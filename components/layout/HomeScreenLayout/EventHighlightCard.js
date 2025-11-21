@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   eventTitle: {
-    color: palette.cyanSoft,
+    color: palette.darkblue,
     fontSize: 16,
     fontWeight: '600',
   },

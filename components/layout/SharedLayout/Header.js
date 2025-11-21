@@ -35,10 +35,10 @@ const Header = ({ userName, subtitle, onBack, onProfile }) => (
       ) : null}
     </View>
 
-    {/* RIGHT SIDE: exactly like before */}
+    {/* Højere side navigation */}
     <View style={styles.headerRight}>
       <TouchableOpacity style={styles.iconCircle} onPress={onBack}>
-        <Ionicons name="chevron-back" size={18} color={palette.white} />
+        <Ionicons name="chevron-back" size={18} color={palette.lightpink} />
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -48,7 +48,7 @@ const Header = ({ userName, subtitle, onBack, onProfile }) => (
         <Ionicons
           name="person-circle-outline"
           size={22}
-          color={palette.white}
+          color={palette.lightpink}
         />
       </TouchableOpacity>
     </View>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  // logo + "HorseEvent"
+  // logo
   logoRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 40,
-    backgroundColor: palette.mintBright,
+    backgroundColor: palette.darkblue,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 6,
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   logoImage: {
     width: 50,
     height: 35,
-    tintColor: '#cb6eabff', // pink horse
+    tintColor: '#cb6eabff', 
   },
 
   headerTitle: {
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 1,
   },
   welcomeText: {
-    color: palette.mint,
+    color: palette.darkblue,
     marginTop: 4,
     fontSize: 13,
   },
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34,
     borderRadius: 17,
-    backgroundColor: palette.aqua,
+    backgroundColor: palette.pink,
     alignItems: 'center',
     justifyContent: 'center',
   },

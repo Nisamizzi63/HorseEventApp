@@ -44,22 +44,22 @@ export default function WelcomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.cyanSoft,       // Background
+    backgroundColor: colors.darkblue,       // Background
   },
   welcome: {
     fontSize: 20,
-    color: colors.mint,                    // Soft purple text
+    color: colors.darkblue,                    // Soft purple text
   },
   appName: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 25,
-    color: colors.cyanSoft,                // Deep blue
+    color: colors.darkblue                // Deep blue
   },
   terms: {
     marginTop: 18,
     textAlign: 'center',
     fontSize: 12,
-    color: colors.dark,                    // Gray-ish blue text
+    color: colors.darkblue,                    // Gray-ish blue text
   },
 });

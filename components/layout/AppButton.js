@@ -1,4 +1,3 @@
-// components/AppButton.js
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import palette from '../colors/palette'; // updated import
@@ -31,30 +30,30 @@ const styles = StyleSheet.create({
 
   // Primary button
   primary: {
-    backgroundColor: palette.cyanSoft,
+    backgroundColor: palette.darkblue,
   },
 
   // Secondary button
   secondary: {
-    backgroundColor: palette.aqua,
+    backgroundColor: palette.pink,
   },
 
   // Outline button
   outline: {
-    backgroundColor: palette.white,
+    backgroundColor: palette.lightblue,
     borderWidth: 1,
-    borderColor: palette.aqua,
+    borderColor: palette.white,
     marginTop: 8,
   },
 
   textFilled: {
-    color: palette.white,
+    color: palette.lightpink,
     fontSize: 16,
     fontWeight: '600',
   },
 
   textOutline: {
-    color: palette.cyanSoft, 
+    color: palette.lightpink, 
     fontSize: 16,
     fontWeight: '500',
   },

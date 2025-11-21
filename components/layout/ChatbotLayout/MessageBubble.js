@@ -19,7 +19,7 @@ export default function MessageBubble({ sender, text }) {
           <Ionicons
             name="chatbubble-ellipses"
             size={18}
-            color={palette.aqua}
+            color={palette.pink}
           />
         </View>
       )}

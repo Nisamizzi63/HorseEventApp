@@ -14,7 +14,6 @@ import Header from '../components/layout/SharedLayout/Header';
 import BottomMenuNavBar from '../components/layout/SharedLayout/BottomMenuNavBar';
 import palette from '../components/colors/palette';
 
-
 import SmallCard from '../components/layout/HomeScreenLayout/SmallCard';
 import EventHighlightCard from '../components/layout/HomeScreenLayout/EventHighlightCard';
 import MenuCard from '../components/layout/HomeScreenLayout/MenuCard';
@@ -71,7 +70,7 @@ export default function HomeScreen() {
                 <Ionicons
                   name="person-circle-outline"
                   size={32}
-                  color={palette.aqua}
+                  color={palette.pink}
                 />
               }
             />
@@ -84,7 +83,7 @@ export default function HomeScreen() {
                 <MaterialCommunityIcons
                   name="robot-outline"
                   size={27}
-                  color={palette.aqua}
+                  color={palette.pink}
                 />
               }
             />
@@ -93,14 +92,14 @@ export default function HomeScreen() {
               title="Heste"
               subtitle="Se og rediger dine heste"
               onPress={() => navigation.navigate('Heste')}
-              icon={<FontAwesome5 name="horse" size={25} color={palette.aqua} />}
+              icon={<FontAwesome5 name="horse" size={25} color={palette.pink} />}
             />
 
             <MenuCard
               title="Stævner"
               subtitle="Planlæg dine stævner"
               onPress={() => navigation.navigate('Events')}
-              icon={<FontAwesome name="trophy" size={25} color={palette.aqua} />}
+              icon={<FontAwesome name="trophy" size={25} color={palette.pink} />}
             />
           </View>
         </View>

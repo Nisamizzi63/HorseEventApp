@@ -113,12 +113,12 @@ export default function ChatbotScreen() {
           />
         </View>
 
-        {/* Fancy, centreret Chatbot-header (egen komponent) */}
+        {/* Fancy gradient chatbot header */}
         <View style={styles.fancyHeaderWrapper}>
           <ChatbotHeader />
         </View>
 
-        {/* CHAT CONTAINER BOX */}
+        {/* chat container box */}
         <View style={styles.chatContainer}>
           {/* Beskeder */}
           <View style={styles.chatArea}>

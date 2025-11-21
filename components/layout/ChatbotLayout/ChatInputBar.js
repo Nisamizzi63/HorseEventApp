@@ -30,7 +30,7 @@ export default function ChatInputBar({
         <TextInput
           style={styles.input}
           placeholder="Skriv en besked..."
-          placeholderTextColor={palette.mint}
+          placeholderTextColor={palette.darkblue}
           value={value}
           onChangeText={onChangeText}
           editable={!loading}
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: palette.aqua,
+    backgroundColor: palette.pink,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 4,
