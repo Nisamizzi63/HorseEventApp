@@ -1,4 +1,3 @@
-// components/MenuCard.js
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View, StyleSheet as RNStyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';

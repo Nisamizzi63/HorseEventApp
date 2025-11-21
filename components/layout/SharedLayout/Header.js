@@ -1,4 +1,3 @@
-// components/Header.js
 import React from 'react';
 import {
   View,
@@ -92,26 +91,25 @@ const styles = StyleSheet.create({
   logoImage: {
     width: 50,
     height: 35,
-    tintColor: '#cb6eabff',
+    tintColor: palette.pink,
   },
 
-  /* NEW: vertical column */
   titleColumn: {
     flexDirection: 'column',
     justifyContent: 'center',
   },
 
   headerTitle: {
-    color: palette.cyanSoft,
+    color: palette.darkblue,
     fontSize: 18,
     fontWeight: '700',
-    marginBottom: -2,   // pulls welcome text closer
+    marginBottom: -2,
   },
 
   welcomeText: {
     color: palette.darkblue,
     fontSize: 13,
-    marginTop: 0,       // keeps it snug under the title
+    marginTop: 0,      
   },
 
   headerRight: {

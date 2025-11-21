@@ -103,7 +103,7 @@ export default function ChatbotScreen() {
       <KeyboardAvoidingView
         style={styles.keyboardWrapper}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={80}
+        keyboardVerticalOffset={-90}
       >
         {/* Global header (som på HomeScreen) */}
         <View style={styles.headerWrapper}>
