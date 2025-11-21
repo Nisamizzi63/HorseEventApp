@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import HeaderImage from '../components/layout/HeaderImage';
 import BottomCard from '../components/layout/BottomCard';
 import AppButton from '../components/layout/AppButton';
-import colors from '../components/colors/colors';
+import colors from '../components/colors/palette'; // corrected import
 
 export default function WelcomeScreen({ navigation }) {
   return (
@@ -44,23 +44,22 @@ export default function WelcomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.teal,
+    backgroundColor: colors.cyanSoft,       // Background
   },
   welcome: {
     fontSize: 20,
-    color: colors.grayDark,
+    color: colors.mint,                    // Soft purple text
   },
   appName: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 25,
-    color: '#000',
+    color: colors.cyanSoft,                // Deep blue
   },
   terms: {
     marginTop: 18,
     textAlign: 'center',
     fontSize: 12,
-    color: colors.grayMid,
+    color: colors.dark,                    // Gray-ish blue text
   },
 });
-

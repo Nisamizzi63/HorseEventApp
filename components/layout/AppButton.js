@@ -1,7 +1,7 @@
 // components/AppButton.js
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import colors from '../colors/colors';
+import palette from '../colors/palette'; // updated import
 
 export default function AppButton({ title, onPress, variant = 'primary' }) {
   const styleMap = {
@@ -29,29 +29,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  // Primary button
   primary: {
-    backgroundColor: colors.teal,
+    backgroundColor: palette.cyanSoft,
   },
 
+  // Secondary button
   secondary: {
-    backgroundColor: colors.purple,
+    backgroundColor: palette.aqua,
   },
 
+  // Outline button
   outline: {
-    backgroundColor: colors.white,
+    backgroundColor: palette.white,
     borderWidth: 1,
-    borderColor: colors.grayBorder,
+    borderColor: palette.aqua,
     marginTop: 8,
   },
 
   textFilled: {
-    color: colors.white,
+    color: palette.white,
     fontSize: 16,
     fontWeight: '600',
   },
 
   textOutline: {
-    color: '#444',
+    color: palette.cyanSoft, 
     fontSize: 16,
     fontWeight: '500',
   },

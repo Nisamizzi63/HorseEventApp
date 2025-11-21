@@ -6,26 +6,26 @@ import palette from '../../colors/palette';
 const BottomMenuNavBar = ({ navigation }) => (
   <View style={styles.navbar}>
     <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-      <Ionicons name="home" size={24} color={palette.white} />
+      <Ionicons name="home" size={24} color={palette.lightpink} />
     </TouchableOpacity>
 
     <TouchableOpacity onPress={() => {}}>
-      <Ionicons name="calendar" size={24} color={palette.white} />
+      <Ionicons name="calendar" size={24} color={palette.lightpink} />
     </TouchableOpacity>
 
     <TouchableOpacity
       style={styles.centerButton}
       onPress={() => navigation.navigate('Chatbot')}
     >
-      <Ionicons name="chatbubbles" size={24} color={palette.white} />
+      <Ionicons name="chatbubbles" size={24} color={palette.lightpink} />
     </TouchableOpacity>
 
     <TouchableOpacity onPress={() => navigation.navigate('Heste')}>
-      <FontAwesome5 name="horse-head" size={24} color={palette.white} />
+      <FontAwesome5 name="horse-head" size={24} color={palette.lightpink} />
     </TouchableOpacity>
 
     <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
-      <Ionicons name="person" size={24} color={palette.white} />
+      <Ionicons name="person" size={24} color={palette.lightpink} />
     </TouchableOpacity>
   </View>
 );

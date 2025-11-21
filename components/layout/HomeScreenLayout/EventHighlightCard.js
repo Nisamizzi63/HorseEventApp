@@ -21,7 +21,7 @@ const EventHighlightCard = ({ title, date, onPress }) => (
 
 const styles = StyleSheet.create({
   eventCard: {
-    backgroundColor: palette.dark,
+    backgroundColor: palette.lightblue,
     borderRadius: 20,
     padding: 12,
     marginTop: 20,

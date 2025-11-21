@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   },
   chatContainer: {
     flex: 1,
-    backgroundColor: palette.dark,
+    backgroundColor: palette.lightblue,
     marginHorizontal: 20,
     marginTop: 4,
     marginBottom: 90, // plads til bottom navbar
