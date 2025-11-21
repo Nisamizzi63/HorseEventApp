@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Alert, ActivityIndicator } from 'react-native';
-import AppButton from '../components/layout/AppButton';
+import AppButton from '../components/layout/WelcomeScreenLayout/AppButton';
 import AuthHeader from '../components/layout/AuthHeader';
 import AuthCard from '../components/layout/AuthCard';
 import AuthSwitch from '../components/layout/AuthSwitch';

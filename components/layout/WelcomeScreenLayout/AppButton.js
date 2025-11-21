@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import palette from '../colors/palette'; // updated import
+import palette from '../../colors/palette';
+
 
 export default function AppButton({ title, onPress, variant = 'primary' }) {
   const styleMap = {

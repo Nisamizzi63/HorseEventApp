@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import palette from '../colors/palette'; 
+import palette from '../../colors/palette';
 
 export default function BottomCard({ children }) {
   return <View style={styles.card}>{children}</View>;

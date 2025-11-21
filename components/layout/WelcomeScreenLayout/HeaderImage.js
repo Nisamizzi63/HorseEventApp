@@ -1,4 +1,3 @@
-// components/HeaderImage.js
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 

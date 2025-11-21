@@ -1,10 +1,11 @@
-// screens/WelcomeScreen.js
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import HeaderImage from '../components/layout/HeaderImage';
-import BottomCard from '../components/layout/BottomCard';
-import AppButton from '../components/layout/AppButton';
-import colors from '../components/colors/palette'; // corrected import
+
+//Welcome Screen layout
+import HeaderImage from '../components/layout/WelcomeScreenLayout/HeaderImage';
+import BottomCard from '../components/layout/WelcomeScreenLayout/BottomCard';
+import AppButton from '../components/layout/WelcomeScreenLayout/AppButton';
+import colors from '../components/colors/palette';
 
 export default function WelcomeScreen({ navigation }) {
   return (

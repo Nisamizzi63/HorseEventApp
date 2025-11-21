@@ -1,4 +1,3 @@
-// palette.js
 const palette = {
   lightblue: 'rgba(162, 183, 205, 1)', 
   white: '#c5dae7ff', 
@@ -8,7 +7,4 @@ const palette = {
   lightpink: '#fbefffff',
   aqua: '#1a5e93ff',
 };
-
-//skal total meget lige huske at rette det her
-
 export default palette;
