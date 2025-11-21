@@ -1,30 +1,51 @@
 // components/EventHighlightCard.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, StyleSheet as RNStyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import palette from '../../colors/palette';
-
 
 const EventHighlightCard = ({ title, date, onPress }) => (
   <TouchableOpacity style={styles.eventCard} onPress={onPress}>
-    <View style={styles.eventImageWrapper}>
-      <Image
-        source={require('../../../assets/KidsRacing.jpg')} // just adjust path if needed
-        style={styles.eventImage}
-      />
+    
+    {/* Gradient background */}
+    <LinearGradient
+      colors={[palette.lightblue, palette.darkblue]}
+      start={{ x: 0, y: 2 }}
+      end={{ x: 2, y: 3 }}
+      style={styles.gradientBackground}
+    />
+
+    {/* Card Content */}
+    <View style={styles.contentWrapper}>
+      <View style={styles.eventImageWrapper}>
+        <Image
+          source={require('../../../assets/KidsRacing.jpg')}
+          style={styles.eventImage}
+        />
+      </View>
+
+      <View style={styles.eventContent}>
+        <Text style={styles.eventTitle}>{title}</Text>
+        <Text style={styles.eventDate}>{date}</Text>
+      </View>
     </View>
-    <View style={styles.eventContent}>
-      <Text style={styles.eventTitle}>{title}</Text>
-      <Text style={styles.eventDate}>{date}</Text>
-    </View>
+
   </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
   eventCard: {
-    backgroundColor: palette.lightblue,
     borderRadius: 20,
     padding: 12,
     marginTop: 20,
+    overflow: 'hidden',            // Makes gradient follow rounded corners
+    position: 'relative',
+  },
+  gradientBackground: {
+    ...RNStyleSheet.absoluteFillObject, // Full background layer
+  },
+  contentWrapper: {
+    zIndex: 2,                     // Ensures content is ABOVE gradient
   },
   eventImageWrapper: {
     width: '100%',
@@ -42,12 +63,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   eventTitle: {
-    color: palette.darkblue,
+    color: palette.darkblue,                // White text to fit gradient
     fontSize: 16,
     fontWeight: '600',
   },
   eventDate: {
-    color: palette.mint,
+    color: palette.darkblue,
     fontSize: 13,
     marginTop: 4,
   },

@@ -33,9 +33,9 @@ const BottomMenuNavBar = ({ navigation }) => (
 const styles = StyleSheet.create({
   navbar: {
     position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 2,
+    left: -4,
+    right: -4,
+    bottom: 8,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',

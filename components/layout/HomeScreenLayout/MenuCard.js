@@ -1,24 +1,41 @@
 // components/MenuCard.js
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View, StyleSheet as RNStyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import palette from '../../colors/palette';
 
 const MenuCard = ({ title, subtitle, icon, onPress }) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
-    <View style={styles.cardIconWrapper}>{icon}</View>
-    <Text style={styles.cardTitle}>{title}</Text>
-    <Text style={styles.cardSubtitle}>{subtitle}</Text>
+     <LinearGradient
+      colors={[palette.lightblue, palette.darkblue]}
+      start={{ x: 0, y: 2 }}
+      end={{ x: 2, y: 3 }}
+      style={styles.gradientBackground}
+    />
+
+    {/* Content on top of gradient */}
+    <View style={styles.cardContent}>
+      <View style={styles.cardIconWrapper}>{icon}</View>
+      <Text style={styles.cardTitle}>{title}</Text>
+      <Text style={styles.cardSubtitle}>{subtitle}</Text>
+    </View>
   </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
   card: {
     width: '48%',
-    backgroundColor: palette.lightblue, 
     borderRadius: 20,
+    marginBottom: 16,
+    overflow: 'hidden', // so gradient follows rounded corners
+    position: 'relative',
+  },
+  gradientBackground: {
+    ...RNStyleSheet.absoluteFillObject, // fill entire card
+  },
+  cardContent: {
     paddingVertical: 18,
     paddingHorizontal: 14,
-    marginBottom: 16,
   },
   cardIconWrapper: {
     width: 40,
@@ -36,7 +53,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   cardSubtitle: {
-    color: palette.mint,
+    color: palette.darkblue,
     fontSize: 12,
   },
 });
