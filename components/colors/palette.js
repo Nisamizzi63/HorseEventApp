@@ -6,6 +6,6 @@ const palette = {
   purple: '#5f3a61ff',
   lightpink: '#fbefffff',
   aqua: '#1a5e93ff',
-  orange: '#ab78cfff'
+  orange: '#ab78cfff',
 };
 export default palette;

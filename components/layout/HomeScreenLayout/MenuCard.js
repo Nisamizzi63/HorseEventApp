@@ -5,8 +5,9 @@ import palette from '../../colors/palette';
 
 const MenuCard = ({ title, subtitle, icon, onPress }) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
-     <LinearGradient
-      colors={[palette.lightblue, palette.darkblue]}
+    {/* Gradient background */}
+    <LinearGradient
+      colors={[palette.darkblue, palette.lightblue]}
       start={{ x: 0, y: 2 }}
       end={{ x: 2, y: 3 }}
       style={styles.gradientBackground}
@@ -43,16 +44,16 @@ const styles = StyleSheet.create({
     backgroundColor: palette.lightpink,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 10,
+    marginBottom: 32,
   },
   cardTitle: {
-    color: palette.darkblue,
+    color: palette.white,
     fontSize: 15,
     fontWeight: '600',
     marginBottom: 2,
   },
   cardSubtitle: {
-    color: palette.darkblue,
+    color: palette.white,
     fontSize: 12,
   },
 });

@@ -42,7 +42,7 @@ export default function MessageBubble({ sender, text }) {
 
       {isUser && (
         <View style={styles.avatarUser}>
-          <Ionicons name="person" size={18} color={palette.white} />
+          <Ionicons name="person" size={18} color={palette.pink} />
         </View>
       )}
     </View>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   userBubble: {
-    backgroundColor: palette.aqua,
+    backgroundColor: palette.pink,
     borderBottomRightRadius: 4,
     marginRight: 8,
   },
@@ -87,16 +87,16 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   botText: {
-    color: palette.cyanSoft,
+    color: palette.darkblue,
   },
   userText: {
-    color: palette.white,
+    color: palette.darkblue,
   },
   avatarBot: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: palette.white,
+    backgroundColor: palette.darkblue,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: palette.mintBright,
+    backgroundColor: palette.lightpink,
     alignItems: 'center',
     justifyContent: 'center',
   },

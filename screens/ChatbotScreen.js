@@ -1,23 +1,22 @@
 import React, { useState, useRef } from 'react';
 import {
   View,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-//Shared Layout
+// Shared Layout
 import palette from '../components/colors/palette';
 import Header from '../components/layout/SharedLayout/Header';
 
-//Chatbotlayout
-import ChatbotHeader from '../components/layout/ChatbotLayout/ChatbotHeader';
+// Chatbot layout
 import ChatMessageList from '../components/layout/ChatbotLayout/ChatMessageList';
 import ChatInputBar from '../components/layout/ChatbotLayout/ChatInputBar';
 
-const API_BASE_URL = 'http://172.20.10.13:5068';
+const API_BASE_URL = 'http://172.20.10.13:8000';
 
 export default function ChatbotScreen() {
   const navigation = useNavigation();
@@ -98,86 +97,88 @@ export default function ChatbotScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <KeyboardAvoidingView
-        style={styles.keyboardWrapper}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={0}
-      >
-        {/* Global header (som på HomeScreen) */}
-        <View style={styles.headerWrapper}>
+    <View style={styles.root}>
+      {/* TOP SAFE AREA: white (notch area + header) */}
+      <SafeAreaView edges={['top']} style={styles.topSafeArea}>
+        <View style={styles.headerBar}>
           <Header
             onBack={() => navigation.goBack()}
             onProfile={() => navigation.navigate('Profil')}
           />
         </View>
+      </SafeAreaView>
 
-        {/* Fancy gradient chatbot header */}
-        <View style={styles.fancyHeaderWrapper}>
-          <ChatbotHeader />
-        </View>
+      {/* BOTTOM PART: light blue + keyboard handling + bottom safe area */}
+      <SafeAreaView edges={['bottom']} style={styles.bottomSafeArea}>
+        <KeyboardAvoidingView
+          style={styles.keyboardWrapper}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={100}
+        >
+          <View style={styles.chatContainer}>
+            <View style={styles.chatArea}>
+              <ChatMessageList
+                messages={messages}
+                listRef={listRef}
+                onLayout={scrollToEnd}
+                onContentSizeChange={scrollToEnd}
+              />
+            </View>
 
-        {/* chat container box */}
-        <View style={styles.chatContainer}>
-          {/* Beskeder */}
-          <View style={styles.chatArea}>
-            <ChatMessageList
-              messages={messages}
-              listRef={listRef}
-              onLayout={scrollToEnd}
-              onContentSizeChange={scrollToEnd}
+            <ChatInputBar
+              value={input}
+              onChangeText={setInput}
+              onSend={sendMessage}
+              loading={loading}
             />
           </View>
-
-          {/* Input inde i container */}
-          <ChatInputBar
-            value={input}
-            onChangeText={setInput}
-            onSend={sendMessage}
-            loading={loading}
-          />
-        </View>
-
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  root: {
     flex: 1,
-    backgroundColor: palette.midBlue,
+    backgroundColor: 'white', // header/top area base color
   },
+
+  // TOP SAFE AREA / HEADER
+  topSafeArea: {
+    backgroundColor: 'white',
+  },
+  headerBar: {
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
+    paddingBottom: 10,
+    justifyContent: 'center',
+  },
+
+  // BOTTOM AREA (chat + bottom safe area)
+  bottomSafeArea: {
+    flex: 1,
+    backgroundColor: palette.lightblue, // this color goes all the way to bottom
+  },
+
   keyboardWrapper: {
     flex: 1,
   },
-  headerWrapper: {
-    paddingHorizontal: 20,
-    paddingTop: 10,
-  },
-  fancyHeaderWrapper: {
-    paddingHorizontal: 20,
-    marginTop: 6,
-    marginBottom: 4,
-  },
+
   chatContainer: {
     flex: 1,
     backgroundColor: palette.lightblue,
-    marginHorizontal: 20,
-    marginTop: 4,
-    borderRadius: 20,
-    padding: 12,
-    shadowColor: '#000',
-    shadowOpacity: 0.15,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 5,
+    paddingHorizontal: 10,
   },
+
   chatArea: {
     flex: 1,
     paddingTop: 4,
-    paddingBottom: 70, // plads til input inde i container
+    paddingBottom: 10,
   },
 });
+
+
+
 
 

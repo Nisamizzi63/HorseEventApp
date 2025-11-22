@@ -7,8 +7,9 @@ import palette from '../../colors/palette';
 const SmallCard = ({ label, value, onPress, style }) => (
   <TouchableOpacity style={[styles.smallCard, style]} onPress={onPress}>
     
+    {/* Gradient background */}
     <LinearGradient
-      colors={[palette.lightblue, palette.darkblue]}
+      colors={[palette.darkblue, palette.lightblue]}
       start={{ x: 0, y: 2 }}
       end={{ x: 2, y: 3 }}
       style={styles.gradientBackground}
@@ -38,11 +39,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
   },
   smallCardLabel: {
-    color: palette.darkblue,
+    color: palette.white,
     fontSize: 12,
   },
   smallCardValue: {
-    color: palette.darkblue,
+    color: palette.white,
     fontSize: 14,
     fontWeight: '600',
     marginTop: 4,

@@ -7,9 +7,9 @@ import palette from '../../colors/palette';
 export default function ChatbotHeader() {
   return (
     <LinearGradient
-      colors={[palette.lightblue, palette.darkblue]}
-      start={{ x: 0, y: 4 }}
-      end={{ x: 1, y: 1 }}
+      colors={[palette.darkblue, palette.lightblue]}
+      start={{ x: 0, y: 2 }}
+      end={{ x: 2, y: 3 }}
       style={styles.fancyHeader}
     >
       <View style={styles.fancyCenter}>

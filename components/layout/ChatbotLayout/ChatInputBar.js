@@ -1,4 +1,3 @@
-// components/chat/ChatInputBar.jsx
 import React from 'react';
 import {
   View,
@@ -60,10 +59,8 @@ export default function ChatInputBar({
 
 const styles = StyleSheet.create({
   inputWrapper: {
-    position: 'absolute',
-    left: 12,
-    right: 12,
-    bottom: 14,
+    paddingHorizontal: 4,
+    paddingBottom: 6, 
   },
   inputInner: {
     flexDirection: 'row',
@@ -91,7 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     paddingHorizontal: 6,
     paddingVertical: 6,
-    color: palette.cyanSoft,
+    color: palette.darkblue,
   },
   sendFab: {
     width: 36,
@@ -103,3 +100,4 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
 });
+

@@ -9,7 +9,7 @@ const EventHighlightCard = ({ title, date, onPress }) => (
     
     {/* Gradient background */}
     <LinearGradient
-      colors={[palette.lightblue, palette.darkblue]}
+      colors={[palette.darkblue, palette.lightblue]}
       start={{ x: 0, y: 2 }}
       end={{ x: 2, y: 3 }}
       style={styles.gradientBackground}
@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   eventTitle: {
-    color: palette.darkblue,                // White text to fit gradient
+    color: palette.white,                // White text to fit gradient
     fontSize: 16,
     fontWeight: '600',
   },
   eventDate: {
-    color: palette.darkblue,
+    color: palette.white,
     fontSize: 13,
     marginTop: 4,
   },

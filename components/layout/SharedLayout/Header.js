@@ -27,7 +27,7 @@ const Header = ({ userName, subtitle, onBack, onProfile }) => (
 
         {/* Title column: HorseEvent + velkommen under */}
         <View style={styles.titleColumn}>
-          <Text style={styles.headerTitle}>HorseEvent</Text>
+          <Text style={styles.headerTitle}>Horse</Text>
 
           {subtitle ? (
             <Text style={styles.welcomeText}>{subtitle}</Text>

@@ -48,13 +48,13 @@ const styles = StyleSheet.create({
   },
 
   textFilled: {
-    color: palette.lightpink,
+    color: palette.white,
     fontSize: 16,
     fontWeight: '600',
   },
 
   textOutline: {
-    color: palette.lightpink, 
+    color: palette.white, 
     fontSize: 16,
     fontWeight: '500',
   },
