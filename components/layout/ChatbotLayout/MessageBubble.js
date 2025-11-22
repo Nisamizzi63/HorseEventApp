@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   userBubble: {
-    backgroundColor: palette.pink,
+    backgroundColor: palette.lightpink,
     borderBottomRightRadius: 4,
     marginRight: 8,
   },

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import {
   View,
+  Text,   
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
@@ -102,9 +103,14 @@ export default function ChatbotScreen() {
       <SafeAreaView edges={['top']} style={styles.topSafeArea}>
         <View style={styles.headerBar}>
           <Header
+            title="Chatbotten"
+            subtitle="Jeg er din AI assistent!"
             onBack={() => navigation.goBack()}
             onProfile={() => navigation.navigate('Profil')}
+            
           />
+          
+
         </View>
       </SafeAreaView>
 
@@ -132,6 +138,7 @@ export default function ChatbotScreen() {
               loading={loading}
             />
           </View>
+          
         </KeyboardAvoidingView>
       </SafeAreaView>
     </View>
@@ -141,7 +148,7 @@ export default function ChatbotScreen() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: 'white', // header/top area base color
+    backgroundColor: 'white',
   },
 
   // TOP SAFE AREA / HEADER
@@ -158,7 +165,7 @@ const styles = StyleSheet.create({
   // BOTTOM AREA (chat + bottom safe area)
   bottomSafeArea: {
     flex: 1,
-    backgroundColor: palette.lightblue, // this color goes all the way to bottom
+    backgroundColor: palette.lightblue, 
   },
 
   keyboardWrapper: {

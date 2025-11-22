@@ -9,7 +9,8 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import palette from '../../colors/palette';
 
-const Header = ({ userName, subtitle, onBack, onProfile }) => (
+// Now accepts a "title" prop that can be changed on each screen
+const Header = ({ title = 'HorseEvent', userName, subtitle, onBack, onProfile }) => (
   <View style={styles.headerRow}>
 
     {/* LEFT SIDE */}
@@ -25,10 +26,12 @@ const Header = ({ userName, subtitle, onBack, onProfile }) => (
           />
         </View>
 
-        {/* Title column: HorseEvent + velkommen under */}
+        {/* Title + subtitle in a column, next to the logo */}
         <View style={styles.titleColumn}>
-          <Text style={styles.headerTitle}>Horse</Text>
+          {/* This is your main title (e.g. "Horse Ride") */}
+          <Text style={styles.headerTitle}>{title}</Text>
 
+          {/* Subtitle / welcome text directly UNDER the title, not under the logo */}
           {subtitle ? (
             <Text style={styles.welcomeText}>{subtitle}</Text>
           ) : userName ? (
@@ -97,6 +100,7 @@ const styles = StyleSheet.create({
   titleColumn: {
     flexDirection: 'column',
     justifyContent: 'center',
+    flexShrink: 1,          // Helps prevent wrapping under the logo
   },
 
   headerTitle: {
@@ -109,7 +113,7 @@ const styles = StyleSheet.create({
   welcomeText: {
     color: palette.darkblue,
     fontSize: 13,
-    marginTop: 0,      
+    marginTop: 0,
   },
 
   headerRight: {
@@ -126,3 +130,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
