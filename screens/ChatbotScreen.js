@@ -105,12 +105,10 @@ export default function ChatbotScreen() {
           <Header
             title="Chatbotten"
             subtitle="Jeg er din AI assistent!"
+            onHome={() => navigation.navigate('Home')}
             onBack={() => navigation.goBack()}
             onProfile={() => navigation.navigate('Profil')}
-            
           />
-          
-
         </View>
       </SafeAreaView>
 

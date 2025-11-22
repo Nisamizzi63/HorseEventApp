@@ -10,14 +10,14 @@ import { Ionicons } from '@expo/vector-icons';
 import palette from '../../colors/palette';
 
 // Now accepts a "title" prop that can be changed on each screen
-const Header = ({ title = 'HorseEvent', userName, subtitle, onBack, onProfile }) => (
+const Header = ({ title = 'HorseEvent', userName, subtitle, onBack, onProfile, onHome }) => (
   <View style={styles.headerRow}>
 
     {/* LEFT SIDE */}
     <View style={styles.headerLeft}>
       <View style={styles.logoRow}>
 
-        {/* Logo */}
+        <TouchableOpacity onPress={onHome}>
         <View style={styles.logoCircle}>
           <Image
             source={require('../../../assets/LogoHest.png')}
@@ -25,6 +25,7 @@ const Header = ({ title = 'HorseEvent', userName, subtitle, onBack, onProfile })
             resizeMode="contain"
           />
         </View>
+        </TouchableOpacity>
 
         {/* Title + subtitle in a column, next to the logo */}
         <View style={styles.titleColumn}>
