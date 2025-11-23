@@ -19,7 +19,7 @@ export default function MessageBubble({ sender, text }) {
           <Ionicons
             name="chatbubble-ellipses"
             size={18}
-            color={palette.pink}
+            color={palette.dark}
           />
         </View>
       )}
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: palette.darkblue,
+    backgroundColor: palette.lightblue,
     alignItems: 'center',
     justifyContent: 'center',
   },

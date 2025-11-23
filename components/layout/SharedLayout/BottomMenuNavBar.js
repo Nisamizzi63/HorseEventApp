@@ -2,9 +2,13 @@ import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import palette from '../../colors/palette';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const BottomMenuNavBar = ({ navigation }) => (
+  
+  
   <View style={styles.navbar}>
+
     <TouchableOpacity onPress={() => navigation.navigate('Home')}>
       <Ionicons name="home" size={24} color={palette.lightpink} />
     </TouchableOpacity>
@@ -27,6 +31,8 @@ const BottomMenuNavBar = ({ navigation }) => (
     <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
       <Ionicons name="person" size={24} color={palette.lightpink} />
     </TouchableOpacity>
+
+    
   </View>
 );
 
@@ -54,6 +60,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 4,
   },
+
+
 });
 
 export default BottomMenuNavBar;

@@ -8,7 +8,7 @@ const MenuCard = ({ title, subtitle, icon, onPress }) => (
     {/* Gradient background */}
     <LinearGradient
       colors={[palette.darkblue, palette.lightblue]}
-      start={{ x: 0, y: 2 }}
+      start={{ x: 0, y: 3 }}
       end={{ x: 2, y: 3 }}
       style={styles.gradientBackground}
     />

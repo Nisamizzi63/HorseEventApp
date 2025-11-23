@@ -27,9 +27,9 @@ export default function HomeScreen() {
 
   return (
     <LinearGradient
-      colors={[palette.white, palette.white]}
-      start={{ x: 1, y: 2 }}
-      end={{ x: 0, y: 0 }}
+      colors={[palette.darkblue, palette.lightpink]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
       style={styles.gradientBackground}
     >
       <SafeAreaView style={styles.safeArea}>

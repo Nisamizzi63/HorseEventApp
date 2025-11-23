@@ -1,13 +1,14 @@
 import React, { useState, useRef } from 'react';
 import {
   View,
-  Text,   
+  Text,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 // Shared Layout
 import palette from '../components/colors/palette';
@@ -98,8 +99,13 @@ export default function ChatbotScreen() {
   }
 
   return (
-    <View style={styles.root}>
-      {/* TOP SAFE AREA: white (notch area + header) */}
+    <LinearGradient
+      colors={[palette.darkblue, palette.lightpink]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.gradientBackground}
+    >
+      {/* TOP SAFE AREA: white header area on top of gradient */}
       <SafeAreaView edges={['top']} style={styles.topSafeArea}>
         <View style={styles.headerBar}>
           <Header
@@ -112,7 +118,7 @@ export default function ChatbotScreen() {
         </View>
       </SafeAreaView>
 
-      {/* BOTTOM PART: light blue + keyboard handling + bottom safe area */}
+      {/* BOTTOM: chat content over gradient */}
       <SafeAreaView edges={['bottom']} style={styles.bottomSafeArea}>
         <KeyboardAvoidingView
           style={styles.keyboardWrapper}
@@ -136,34 +142,33 @@ export default function ChatbotScreen() {
               loading={loading}
             />
           </View>
-          
         </KeyboardAvoidingView>
       </SafeAreaView>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  root: {
+  gradientBackground: {
     flex: 1,
-    backgroundColor: 'white',
   },
 
   // TOP SAFE AREA / HEADER
   topSafeArea: {
-    backgroundColor: 'white',
+  backgroundColor: 'transparent',
   },
   headerBar: {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     paddingHorizontal: 20,
     paddingBottom: 10,
     justifyContent: 'center',
   },
 
+
   // BOTTOM AREA (chat + bottom safe area)
   bottomSafeArea: {
     flex: 1,
-    backgroundColor: palette.lightblue, 
+    backgroundColor: 'transparent', // important so gradient is visible
   },
 
   keyboardWrapper: {
@@ -172,7 +177,7 @@ const styles = StyleSheet.create({
 
   chatContainer: {
     flex: 1,
-    backgroundColor: palette.lightblue,
+    backgroundColor: 'transparent',
     paddingHorizontal: 10,
   },
 
@@ -182,6 +187,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
 });
+
 
 
 

@@ -7,14 +7,13 @@ import palette from '../../colors/palette';
 const EventHighlightCard = ({ title, date, onPress }) => (
   <TouchableOpacity style={styles.eventCard} onPress={onPress}>
     
-    {/* Gradient background */}
+     {/* Gradient background */}
     <LinearGradient
       colors={[palette.darkblue, palette.lightblue]}
       start={{ x: 0, y: 2 }}
       end={{ x: 2, y: 3 }}
       style={styles.gradientBackground}
     />
-
     {/* Card Content */}
     <View style={styles.contentWrapper}>
       <View style={styles.eventImageWrapper}>

@@ -29,7 +29,6 @@ const Header = ({ title = 'HorseEvent', userName, subtitle, onBack, onProfile, o
 
         {/* Title + subtitle in a column, next to the logo */}
         <View style={styles.titleColumn}>
-          {/* This is your main title (e.g. "Horse Ride") */}
           <Text style={styles.headerTitle}>{title}</Text>
 
           {/* Subtitle / welcome text directly UNDER the title, not under the logo */}
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 40,
-    backgroundColor: palette.darkblue,
+    backgroundColor: palette.lightblue,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 6,
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
   logoImage: {
     width: 50,
     height: 35,
-    tintColor: palette.pink,
+    tintColor: palette.darkblue,
   },
 
   titleColumn: {
@@ -105,14 +104,14 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: palette.darkblue,
+    color: palette.lightpink,
     fontSize: 18,
     fontWeight: '700',
     marginBottom: -2,
   },
 
   welcomeText: {
-    color: palette.darkblue,
+    color: palette.lightpink,
     fontSize: 13,
     marginTop: 0,
   },
