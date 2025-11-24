@@ -1,40 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import palette from '../../colors/palette';
-import { LinearGradient } from 'expo-linear-gradient';
+import ConfirmModal from './ConfirmModal';
 
-const BottomMenuNavBar = ({ navigation }) => (
-  
-  
-  <View style={styles.navbar}>
+const BottomMenuNavBar = ({ navigation }) => {
 
-    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-      <Ionicons name="home" size={24} color={palette.lightpink} />
-    </TouchableOpacity>
+  const [logoutVisible, setLogoutVisible] = useState(false);
 
-    <TouchableOpacity onPress={() => {}}>
-      <Ionicons name="calendar" size={24} color={palette.lightpink} />
-    </TouchableOpacity>
+  const handleLogout = () => {
+    setLogoutVisible(false);
+    navigation.replace('Welcome'); //The logout navigation
+  };
 
-    <TouchableOpacity
-      style={styles.centerButton}
-      onPress={() => navigation.navigate('Chatbot')}
-    >
-      <Ionicons name="chatbubbles" size={24} color={palette.lightpink} />
-    </TouchableOpacity>
+  return (
+    <>
+      <View style={styles.navbar}>
 
-    <TouchableOpacity onPress={() => navigation.navigate('Heste')}>
-      <FontAwesome5 name="horse-head" size={24} color={palette.lightpink} />
-    </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Ionicons name="home" size={24} color={palette.lightpink} />
+        </TouchableOpacity>
 
-    <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
-      <Ionicons name="person" size={24} color={palette.lightpink} />
-    </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
+          <Ionicons name="calendar" size={24} color={palette.lightpink} />
+        </TouchableOpacity>
 
-    
-  </View>
-);
+        <TouchableOpacity
+          style={styles.centerButton}
+          onPress={() => navigation.navigate('Chatbot')}
+        >
+          <Ionicons name="chatbubbles" size={24} color={palette.lightpink} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Heste')}>
+          <FontAwesome5 name="horse-head" size={24} color={palette.lightpink} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => setLogoutVisible(true)}>
+          <Ionicons name="exit" size={24} color={palette.lightpink} />
+        </TouchableOpacity>
+
+      </View>
+      <ConfirmModal
+        visible={logoutVisible}
+        title="Log out?"
+        message="Are you sure you want to log out?"
+        onCancel={() => setLogoutVisible(false)}
+        onConfirm={handleLogout}
+      />
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   navbar: {
@@ -60,8 +76,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 4,
   },
-
-
 });
 
 export default BottomMenuNavBar;
