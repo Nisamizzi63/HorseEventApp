@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CheckBox from 'expo-checkbox';
-import colors from '../colors/colors';
+import palette from '../../colors/palette';
 
 export default function TermsCheckbox({ value, onValueChange }) {
   return (
@@ -9,7 +9,7 @@ export default function TermsCheckbox({ value, onValueChange }) {
       <CheckBox
         value={value}
         onValueChange={onValueChange}
-        color={value ? colors.teal : undefined}
+        color={value ? palette.darkblue : undefined}
       />
       <Text style={styles.label}>
         Jeg accepterer <Text style={styles.link}>Vilkår</Text> og{' '}
@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     flex: 1,
     fontSize: 12,
-    color: colors.grayDark,
+    color: palette.darkblue,
   },
   link: {
-    color: colors.purple,
+    color: palette.pink,
     fontWeight: '600',
   },
 });

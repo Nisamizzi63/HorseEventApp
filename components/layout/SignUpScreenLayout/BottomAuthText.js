@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-import colors from '../colors/colors';
+import palette from '../../colors/palette';
 
 export default function BottomAuthText({ question, actionLabel, onPress }) {
   return (
@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 13,
-    color: colors.grayMid,
+    color: palette.darkblue,
   },
   link: {
-    color: colors.purple,
+    color: palette.pink,
     fontWeight: '600',
   },
 });

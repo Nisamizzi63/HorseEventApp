@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Alert, ActivityIndicator } from 'react-native';
-import AppButton from '../components/layout/WelcomeScreenLayout/AppButton';
-import AuthHeader from '../components/layout/AuthHeader';
-import AuthCard from '../components/layout/AuthCard';
-import AuthSwitch from '../components/layout/AuthSwitch';
-import FormField from '../components/layout/FormField';
-import TermsCheckbox from '../components/layout/TermsCheckbox';
-import BottomAuthText from '../components/layout/BottomAuthText';
-import colors from '../components/colors/colors';
 
+//layout imports
+import AppButton from '../components/layout/WelcomeScreenLayout/AppButton';
+import AuthHeader from '../components/layout/SignUpScreenLayout/AuthHeader';
+import AuthCard from '../components/layout/SignUpScreenLayout/AuthCard';
+import AuthSwitch from '../components/layout/SignUpScreenLayout/AuthSwitch';
+import FormField from '../components/layout/SignUpScreenLayout/FormField';
+import TermsCheckbox from '../components/layout/SignUpScreenLayout/TermsCheckbox';
+import BottomAuthText from '../components/layout/SignUpScreenLayout/BottomAuthText';
 import Constants from "expo-constants";
+import palette from '../components/colors/palette';
 
 const API_BASE_URL = Constants.expoConfig.extra.apiBaseUrl;
-
-
 
 const CREATE_USER_URL = `${API_BASE_URL}/api/User`;
 
@@ -145,7 +144,7 @@ export default function SignupScreen({ navigation }) {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: colors.teal,
+    backgroundColor: palette.darkblue,
   },
   buttonArea: {
     marginBottom: 16,

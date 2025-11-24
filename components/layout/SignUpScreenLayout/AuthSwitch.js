@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import colors from '../colors/colors';
+import palette from '../../colors/palette';
 
-export default function AuthSwitch({
+export default function AuthSwitch({ 
   leftLabel,
   rightLabel,
-  active = 'right', // 'left' or 'right'
+  active = 'right',
   onPressLeft,
   onPressRight,
 }) {
@@ -51,7 +51,7 @@ export default function AuthSwitch({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: '#F1F3F5',
+    backgroundColor: palette.gray,
     borderRadius: 999,
     padding: 4,
     marginBottom: 24,
@@ -63,16 +63,16 @@ const styles = StyleSheet.create({
     borderRadius: 999,
   },
   tabActive: {
-    backgroundColor: colors.teal,
+    backgroundColor: palette.aqua,
   },
   text: {
     fontSize: 14,
   },
   textInactive: {
-    color: colors.grayMid,
+    color: palette.darkgrey,
   },
   textActive: {
-    color: colors.white,
+    color: palette.white,
     fontWeight: '600',
   },
 });

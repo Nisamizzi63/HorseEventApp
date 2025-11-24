@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import colors from '../colors/colors';
-import BackButton from './BackButton';          // 👈 IMPORTANT path
+import BackButton from '../BackButton';
+import palette from '../../colors/palette';
 
 export default function AuthHeader({
   appName = 'HorseEvent',
@@ -11,7 +11,7 @@ export default function AuthHeader({
 }) {
   return (
     <View style={styles.header}>
-      {showBack && <BackButton />}              {/* 👈 renders button */}
+      {showBack && <BackButton />}
       <Text style={styles.appName}>{appName}</Text>
       {title && <Text style={styles.title}>{title}</Text>}
       {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
@@ -24,21 +24,21 @@ const styles = StyleSheet.create({
     paddingTop: 70,
     paddingHorizontal: 24,
     paddingBottom: 40,
-    backgroundColor: colors.teal,
+    backgroundColor: palette.darkblue,
   },
   appName: {
-    color: colors.white,
+    color: palette.white,
     fontSize: 18,
     fontWeight: '600',
   },
   title: {
-    color: colors.white,
+    color: palette.white,
     fontSize: 28,
     fontWeight: '700',
     marginTop: 4,
   },
   subtitle: {
-    color: 'rgba(255,255,255,0.85)',
+    color: palette.lightblue,
     marginTop: 6,
     fontSize: 14,
   },

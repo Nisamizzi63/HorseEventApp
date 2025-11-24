@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Image } fro
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useAuth } from '../AuthContext';
 import Constants from "expo-constants";
+import palette from '../components/colors/palette';
 
 const API_BASE_URL = Constants.expoConfig.extra.apiBaseUrl;
 
@@ -59,8 +60,6 @@ export default function LoginScreen({ navigation }) {
       />
       </View>
 
-      
-
       {/* White rounded card */}
       <View style={styles.card}>
         <Text style={styles.title}>Lad os starte!</Text>
@@ -97,11 +96,9 @@ export default function LoginScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-
-  
   container: {
     flex: 1,
-    backgroundColor: '#54a49bff', 
+    backgroundColor: palette.darkblue, 
   },
 
   header: {
@@ -117,7 +114,7 @@ const styles = StyleSheet.create({
 
   card: {
     flex: 3,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: palette.lightpink,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     padding: 30,
@@ -136,13 +133,13 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 15,
     borderRadius: 12,
-    backgroundColor: '#F2F2F2',
+    backgroundColor: palette.white,
     borderWidth: 1,
     borderColor: '#DDD',
   },
   
   button: {
-    backgroundColor: '#dd94f5ff', 
+    backgroundColor: palette.pink, 
     padding: 15,
     borderRadius: 12,
     marginTop: 10,
@@ -156,7 +153,7 @@ const styles = StyleSheet.create({
   },
 
   backText: {
-    color: '#549F93',
+    color: palette.darkblue,
     textAlign: 'center',
     marginTop: 15,
     fontSize: 16,

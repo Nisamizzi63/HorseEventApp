@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import palette from '../../colors/palette';
 
 export default function BottomCard({ children }) {
+  console.log("Rendering BottomCard"); 
   return <View style={styles.card}>{children}</View>;
 }
 

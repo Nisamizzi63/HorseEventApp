@@ -4,6 +4,7 @@ import palette from '../../colors/palette';
 
 
 export default function AppButton({ title, onPress, variant = 'primary' }) {
+  console.log("Rendering AppButton"); 
   const styleMap = {
     primary: styles.primary,
     secondary: styles.secondary,

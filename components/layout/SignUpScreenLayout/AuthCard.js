@@ -1,6 +1,6 @@
 import React from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Platform } from 'react-native';
-import colors from '../colors/colors';
+import palette from '../../colors/palette';
 
 export default function AuthCard({ children }) {
   return (
@@ -18,7 +18,7 @@ export default function AuthCard({ children }) {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: palette.lightpink,
     borderTopLeftRadius: 36,
     borderTopRightRadius: 36,
   },

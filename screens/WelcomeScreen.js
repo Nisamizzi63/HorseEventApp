@@ -8,6 +8,7 @@ import AppButton from '../components/layout/WelcomeScreenLayout/AppButton';
 import colors from '../components/colors/palette';
 
 export default function WelcomeScreen({ navigation }) {
+  console.log("Rendering WelcomeScreen");   // 👈 RIGHT HERE
   return (
     <View style={styles.container}>
       <HeaderImage source={require('../assets/LogoHest.png')} />

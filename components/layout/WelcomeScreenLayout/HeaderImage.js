@@ -3,6 +3,7 @@ import { View, Image, StyleSheet } from 'react-native';
 import palette from '../../colors/palette';
 
 export default function HeaderImage({ source }) {
+  console.log("Rendering HeaderImage"); 
   return (
     <View style={styles.header}>
       <Image

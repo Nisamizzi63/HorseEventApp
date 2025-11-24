@@ -1,18 +1,18 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import colors from '../colors/colors';
+import palette from '../../colors/palette';
 
 export default function FormField({
   label,
   style,
   ...textInputProps
-}) {
+}) { 
   return (
     <View style={[styles.field, style]}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
         style={styles.input}
-        placeholderTextColor={colors.grayBorder}
+        placeholderTextColor={palette.lightblue}
         {...textInputProps}
       />
     </View>
@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 13,
-    color: colors.grayMid,
+    color: palette.darkblue,
     marginBottom: 6,
   },
   input: {
-    backgroundColor: '#F7F8FA',
+    backgroundColor: palette.white,
     borderWidth: 1,
-    borderColor: colors.grayBorder,
+    borderColor: palette.white,
     borderRadius: 999,
     paddingVertical: 12,
     paddingHorizontal: 18,
