@@ -13,6 +13,9 @@ import {
   RefreshControl,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Constants from "expo-constants";
+
+const API_BASE_URL = Constants.expoConfig.extra.apiBaseUrl;
 
 export default function HorsesScreen() {
   const navigation = useNavigation();
@@ -25,8 +28,8 @@ export default function HorsesScreen() {
     try {
       setError(null);
 
-      // 👉 SKIFT DENNE URL til din egen backend:
-      const API_BASE_URL = 'http://10.0.0.7:5068';
+
+      const API_BASE_URL = Constants.expoConfig.extra.apiBaseUrl;
       const response = await fetch(`${API_BASE_URL}/api/Horse`);
 
       

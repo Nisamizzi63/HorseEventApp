@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useAuth } from '../AuthContext';
+import Constants from "expo-constants";
 
-const API_BASE_URL = 'http://172.20.10.13:5068';
+const API_BASE_URL = Constants.expoConfig.extra.apiBaseUrl;
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
@@ -12,12 +13,12 @@ export default function LoginScreen({ navigation }) {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Fejl', 'Udfyld både email og password.');
+      Alert.alert('Fejl', 'Udfyld både brugernavn og kodeord.');
       return;
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/User/login`, {
+        const response = await fetch(`${API_BASE_URL}/api/User/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -27,7 +28,7 @@ export default function LoginScreen({ navigation }) {
       });
 
       if (!response.ok) {
-        throw new Error('Forkert email eller password');
+        throw new Error('Forkert brugernavn eller kodeord');
       }
 
       const user = await response.json();
@@ -66,7 +67,7 @@ export default function LoginScreen({ navigation }) {
 
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Brugernavn"
           placeholderTextColor="#7A7A7A"
           keyboardType="email-address"
           autoCapitalize="none"
@@ -76,7 +77,7 @@ export default function LoginScreen({ navigation }) {
 
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="Kodeord"
           placeholderTextColor="#7A7A7A"
           secureTextEntry
           value={password}

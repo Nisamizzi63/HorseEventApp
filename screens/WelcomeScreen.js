@@ -10,7 +10,7 @@ import colors from '../components/colors/palette';
 export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <HeaderImage source={require('../assets/ChildRiding.png')} />
+      <HeaderImage source={require('../assets/LogoHest.png')} />
 
       <BottomCard>
         <Text style={styles.welcome}>Velkommen til</Text>
