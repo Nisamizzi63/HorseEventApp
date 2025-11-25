@@ -5,10 +5,9 @@ const palette = {
   pink: '#cb6eabff',
   purple: '#5f3a61ff',
   lightpink: '#fbefffff',
-  aqua: '#9cd2c8ff',
+  aqua: '#77d3beff',
   orange: '#ab78cfff',
-  SwitchButton: '#4ef7e1f8',
   gray: '#F1F3F5',
-  darkgrey: '#4e4d4df8',
+  darkgrey: "#7A7A7A",
 };
 export default palette;

@@ -51,7 +51,7 @@ export default function AuthSwitch({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: palette.gray,
+    backgroundColor: palette.white,
     borderRadius: 999,
     padding: 4,
     marginBottom: 24,

@@ -67,7 +67,7 @@ export default function LoginScreen({ navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Brugernavn"
-          placeholderTextColor="#7A7A7A"
+          placeholderTextColor={palette.darkgrey}
           keyboardType="email-address"
           autoCapitalize="none"
           value={email}
@@ -77,7 +77,7 @@ export default function LoginScreen({ navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Kodeord"
-          placeholderTextColor="#7A7A7A"
+          placeholderTextColor={palette.darkgrey}
           secureTextEntry
           value={password}
           onChangeText={setPassword}
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: '700',
-    color: '#000',
+    color: palette.darkblue,
     marginBottom: 25,
     textAlign: 'center',
   },
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: palette.white,
     borderWidth: 1,
-    borderColor: '#DDD',
+    borderColor: palette.white,
   },
   
   button: {
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: '#FFF',
+    color: palette.white,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '600',
