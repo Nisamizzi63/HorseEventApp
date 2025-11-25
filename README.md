@@ -5,8 +5,8 @@ Users can create accounts, view and edit their profiles, add horses, and access 
 The app focuses on simplicity, clean navigation, and preparing for future integration with a real backend and Azure storage.
 
 Setup
-1. Go into project file in terminal
+1. Go into project file path in terminal
 3. npm install
 4. npm install -g expo-cli
-5. Create an .env file in root folder API_URL=https://your-backend-url.com, with backend port 5068
-6. run project with "npx expo start
+5. Create an .env file in root folder API_URL=https://(Din-Ipadresse-adresse):5068
+6. Run project with "npx expo start
