@@ -1,117 +1,64 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
-import palette from '../components/colors/palette';
-import Header from '../components/layout/SharedLayout/Header';
+import AppHeader from '../components/layout/AppHeader';
+import BackButton from '../components/layout/BackButton';
 import BottomNavbar from '../components/layout/BottomNavbar';
 
 export default function HorseDetailsScreen() {
-  const navigation = useNavigation();
   const route = useRoute();
-  const { horse } = route.params;
+  const { horse } = route.params; // horse kommer fra navigation.navigate(..., { horse })
 
   return (
-    <LinearGradient
-      colors={[palette.darkblue, palette.lightpink]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.gradientBackground}
-    >
-      {/* TOP: header over gradient */}
-      <SafeAreaView edges={['top']} style={styles.topSafeArea}>
-        <View style={styles.headerBar}>
-          <Header
-            title={horse.name || 'Hest'}
-            subtitle="Hestedetaljer"
-            onHome={() => navigation.navigate('Home')}
-            onBack={() => navigation.goBack()}
-            onProfile={() => navigation.navigate('Profil')}
-          />
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <AppHeader title={horse.name} />
+
+        <View style={styles.content}>
+          <Text style={styles.label}>UELN</Text>
+          <Text style={styles.value}>{horse.ueln || '—'}</Text>
+
+          <Text style={styles.label}>Højde</Text>
+          <Text style={styles.value}>
+            {horse.height ? `${horse.height} cm` : '—'}
+          </Text>
+
+          <Text style={styles.label}>Fødselsår</Text>
+          <Text style={styles.value}>{horse.birthYear || '—'}</Text>
+
+          {/* Her kan du senere tilføje flere felter */}
         </View>
-      </SafeAreaView>
 
-      {/* BOTTOM: content + bottom nav over gradient */}
-      <SafeAreaView edges={['bottom']} style={styles.bottomSafeArea}>
-        <View style={styles.pageContainer}>
-          <ScrollView
-            contentContainerStyle={styles.content}
-            showsVerticalScrollIndicator={false}
-          >
-            <Text style={styles.sectionTitle}>Basisoplysninger</Text>
+        <BackButton />
+      </View>
 
-            <Text style={styles.label}>UELN</Text>
-            <Text style={styles.value}>{horse.ueln || '—'}</Text>
-
-            <Text style={styles.label}>Højde</Text>
-            <Text style={styles.value}>
-              {horse.height ? `${horse.height} cm` : '—'}
-            </Text>
-
-            <Text style={styles.label}>Fødselsår</Text>
-            <Text style={styles.value}>{horse.birthYear || '—'}</Text>
-
-            {/* Tilføj flere felter her senere */}
-          </ScrollView>
-
-          <BottomNavbar />
-        </View>
-      </SafeAreaView>
-    </LinearGradient>
+      <BottomNavbar />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  gradientBackground: {
+  safeArea: {
     flex: 1,
+    backgroundColor: '#fff',
   },
-
-  // HEADER AREA
-  topSafeArea: {
-    backgroundColor: 'transparent',
-  },
-  headerBar: {
-    backgroundColor: 'transparent',
-    paddingHorizontal: 20,
-    paddingBottom: 10,
-    justifyContent: 'center',
-  },
-
-  // BOTTOM AREA
-  bottomSafeArea: {
+  container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    paddingBottom: 80,
   },
-  pageContainer: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingBottom: 0,
-    justifyContent: 'space-between',
-  },
-
   content: {
-    paddingVertical: 16,
-  },
-
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: palette.white,
-    marginBottom: 8,
+    padding: 20,
   },
   label: {
-    fontSize: 13,
-    color: 'rgba(255,255,255,0.75)',
+    fontSize: 14,
+    color: '#6b7280',
     marginTop: 16,
     textTransform: 'uppercase',
-    letterSpacing: 0.5,
   },
   value: {
     fontSize: 18,
     fontWeight: '500',
     marginTop: 4,
-    color: palette.white,
   },
 });

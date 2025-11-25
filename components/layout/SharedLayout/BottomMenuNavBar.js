@@ -21,7 +21,7 @@ const BottomMenuNavBar = ({ navigation }) => {
           <Ionicons name="home" size={24} color={palette.lightpink} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Kalender')}>
           <Ionicons name="calendar" size={24} color={palette.lightpink} />
         </TouchableOpacity>
 

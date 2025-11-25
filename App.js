@@ -13,11 +13,12 @@ import ChatbotScreen from './screens/ChatbotScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import HorsesScreen from './screens/HorsesScreen';
 import HorseDetailsScreen from './screens/HorseDetailsScreen';
+import CalendarScreen from './screens/CalendarScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <AuthProvider>   {/* Alt herinde kan se ryttere indformationer*/}
+    <AuthProvider>   
       <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
@@ -29,6 +30,8 @@ export default function App() {
         <Stack.Screen name="Profil" component={ProfileScreen} />
         <Stack.Screen name="Heste" component={HorsesScreen} />
         <Stack.Screen name="HorseDetails" component={HorseDetailsScreen} />
+        <Stack.Screen name="Kalender" component={CalendarScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
     </AuthProvider>
