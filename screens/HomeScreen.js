@@ -56,7 +56,7 @@ export default function HomeScreen() {
             <SmallCard
               label="Stævner"
               value="Kommende events"
-              onPress={() => navigation.navigate('Events')}
+              onPress={() => navigation.navigate('Stævner')}
             />
           </View>
 
@@ -65,7 +65,7 @@ export default function HomeScreen() {
             <EventHighlightCard
               title="Kommende events: Junior Riding Event"
               date="12 November, 2025"
-              onPress={() => navigation.navigate('Events')}
+              onPress={() => navigation.navigate('Stævner')}
             />
 
             {/* Main grid */}
@@ -106,7 +106,7 @@ export default function HomeScreen() {
               <MenuCard
                 title="Stævner"
                 subtitle="Planlæg dine stævner"
-                onPress={() => navigation.navigate('Events')}
+                onPress={() => navigation.navigate('Stævner')}
                 icon={<FontAwesome name="trophy" size={25} color={palette.pink} />}
               />
             </View>

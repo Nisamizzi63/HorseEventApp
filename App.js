@@ -14,6 +14,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import HorsesScreen from './screens/HorsesScreen';
 import HorseDetailsScreen from './screens/HorseDetailsScreen';
 import CalendarScreen from './screens/CalendarScreen';
+import EventsScreen from './screens/EventsScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
         <Stack.Screen name="Heste" component={HorsesScreen} />
         <Stack.Screen name="HorseDetails" component={HorseDetailsScreen} />
         <Stack.Screen name="Kalender" component={CalendarScreen} />
+        <Stack.Screen name="Stævner" component={EventsScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>

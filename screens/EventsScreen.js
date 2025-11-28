@@ -1,3 +1,4 @@
+// screens/EventsScreen.js
 import React, { useEffect, useState } from 'react';
 import {
   View,
@@ -11,45 +12,47 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import HorseCard from '../components/cards/HorseCard';
-import palette from '../components/colors/palette';
+import { FontAwesome } from '@expo/vector-icons';
+import Constants from 'expo-constants';
+
+import EventCard from '../components/cards/EventCard';
 import Header from '../components/layout/SharedLayout/Header';
 import BottomMenuNavBar from '../components/layout/SharedLayout/BottomMenuNavBar';
-import { FontAwesome } from '@expo/vector-icons';
-
-import Constants from 'expo-constants';
+import palette from '../components/colors/palette';
 
 const API_BASE_URL = Constants.expoConfig.extra.apiBaseUrl;
 
-export default function HorsesScreen() {
+export default function EventsScreen() {
   const navigation = useNavigation();
-  const [horses, setHorses] = useState([]);
+  const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState(null);
-  const [searchText, setSearchText] = useState(''); 
+  const [searchText, setSearchText] = useState('');
 
-  const fetchHorses = async () => {
+  const fetchEvents = async () => {
     try {
       setError(null);
-      const response = await fetch(`${API_BASE_URL}/api/Horse`);
 
+      const response = await fetch(`${API_BASE_URL}/api/Event`);
       if (!response.ok) {
-        throw new Error('Kunne ikke hente heste');
+        throw new Error('Fejl ved hentning af stævner');
       }
 
       const data = await response.json();
 
-      const mapped = data.map(h => ({
-        id: h.id,
-        ueln: h.ueln,
-        name: h.name,
-        height: h.height,
-        birthYear: h.birthYear,
+      // Tilpas felter til dit API hvis nødvendigt
+      const mapped = data.map(e => ({
+        id: e.id,
+        name: e.name,
+        location: e.location,
+        startDate: e.startDate,
+        endDate: e.endDate,
       }));
 
-      setHorses(mapped);
+      setEvents(mapped);
     } catch (err) {
+      console.error(err);
       setError(err.message || 'Der opstod en fejl');
     } finally {
       setLoading(false);
@@ -58,33 +61,30 @@ export default function HorsesScreen() {
   };
 
   useEffect(() => {
-    fetchHorses();
+    fetchEvents();
   }, []);
 
   const onRefresh = () => {
     setRefreshing(true);
-    fetchHorses();
+    fetchEvents();
   };
 
-  // 🔍 filtrer hestene baseret på søgetekst
   const normalizedSearch = searchText.trim().toLowerCase();
-  const filteredHorses = horses.filter(horse => {
+  const filteredEvents = events.filter(ev => {
     if (!normalizedSearch) return true;
 
-    const name = (horse.name || '').toLowerCase();
-    const ueln = (horse.ueln || '').toLowerCase();
-    const birthYear = horse.birthYear ? String(horse.birthYear) : '';
-    const height = horse.height ? String(horse.height) : '';
+    const name = (ev.name || '').toLowerCase();
+    const location = (ev.location || '').toLowerCase();
+    const startDate = ev.startDate ? String(ev.startDate).toLowerCase() : '';
 
     return (
       name.includes(normalizedSearch) ||
-      ueln.includes(normalizedSearch) ||
-      birthYear.includes(normalizedSearch) ||
-      height.includes(normalizedSearch)
+      location.includes(normalizedSearch) ||
+      startDate.includes(normalizedSearch)
     );
   });
 
-  const hasNoHorses = !loading && !error && horses.length === 0;
+  const hasNoEvents = !loading && !error && events.length === 0;
 
   return (
     <LinearGradient
@@ -93,12 +93,12 @@ export default function HorsesScreen() {
       end={{ x: 1, y: 1 }}
       style={styles.gradientBackground}
     >
-      {/* TOP SAFE AREA: header ovenpå gradienten */}
+      {/* TOP-OMRÅDE / HEADER */}
       <SafeAreaView edges={['top']} style={styles.topSafeArea}>
         <View style={styles.headerBar}>
           <Header
-            title="Mine heste"
-            subtitle="Overblik over dine heste"
+            title="Mine stævner"
+            subtitle="Overblik over dine stævner"
             onHome={() => navigation.navigate('Home')}
             onBack={() => navigation.goBack()}
             onProfile={() => navigation.navigate('Profil')}
@@ -106,7 +106,7 @@ export default function HorsesScreen() {
         </View>
       </SafeAreaView>
 
-      {/* BUND: indhold + bottom navbar ovenpå gradient */}
+      {/* INDHOLD + BOTTOM NAVBAR */}
       <SafeAreaView edges={['bottom']} style={styles.bottomSafeArea}>
         <View style={styles.contentContainer}>
           {error && (
@@ -118,15 +118,15 @@ export default function HorsesScreen() {
           {loading ? (
             <View style={styles.center}>
               <ActivityIndicator size="large" />
-              <Text style={styles.loadingText}>Henter heste...</Text>
+              <Text style={styles.loadingText}>Henter stævner...</Text>
             </View>
-          ) : hasNoHorses ? (
+          ) : hasNoEvents ? (
             <View style={styles.center}>
-              <Text style={styles.emptyText}>Du har ingen heste endnu.</Text>
+              <Text style={styles.emptyText}>Du har ingen stævner endnu.</Text>
             </View>
           ) : (
             <>
-              {/* 🔍 SØGEFELT */}
+              {/* SØGEFELT */}
               <View style={styles.searchContainer}>
                 <FontAwesome
                   name="search"
@@ -137,26 +137,27 @@ export default function HorsesScreen() {
 
                 <TextInput
                   style={styles.searchInput}
-                  placeholder="Søg efter hest (navn, UELN, år, højde)"
+                  placeholder="Søg efter stævne (navn, sted, dato)"
                   placeholderTextColor="rgba(255,255,255,0.7)"
                   value={searchText}
                   onChangeText={setSearchText}
                 />
               </View>
 
+              {/* LISTE MED STÆVNER */}
               <View style={styles.listWrapper}>
                 <FlatList
-                  data={filteredHorses}
+                  data={filteredEvents}
                   keyExtractor={item => item.id.toString()}
                   contentContainerStyle={styles.listContent}
                   refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                   }
                   renderItem={({ item }) => (
-                    <HorseCard
-                      horse={item}
+                    <EventCard
+                      event={item}
                       onPress={() =>
-                        navigation.navigate('HorseDetails', { horse: item })
+                        navigation.navigate('EventDetails', { event: item })
                       }
                     />
                   )}
@@ -164,8 +165,8 @@ export default function HorsesScreen() {
                     <View style={styles.center}>
                       <Text style={styles.emptyText}>
                         {searchText
-                          ? 'Ingen heste matcher din søgning.'
-                          : 'Du har ingen heste endnu.'}
+                          ? 'Ingen stævner matcher din søgning.'
+                          : 'Du har ingen stævner endnu.'}
                       </Text>
                     </View>
                   )}
@@ -186,7 +187,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  // TOP SAFE AREA / HEADER
   topSafeArea: {
     backgroundColor: 'transparent',
   },
@@ -197,7 +197,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  // BUND-OMRÅDE (indhold + bottom navbar)
   bottomSafeArea: {
     flex: 1,
     backgroundColor: 'transparent',
@@ -208,12 +207,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingTop: 4,
     paddingBottom: 10,
-  },
-
-  // 🔍 søgefelt
-  searchContainer: {
-    marginBottom: 10,
-    marginHorizontal: 8,
   },
 
   listWrapper: {
@@ -244,6 +237,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#fff',
   },
+
   errorBox: {
     marginBottom: 12,
     padding: 12,
@@ -255,28 +249,24 @@ const styles = StyleSheet.create({
   },
 
   searchContainer: {
-  marginBottom: 10,
-  marginHorizontal: 8,
-  position: 'relative',
-},
-
-searchIcon: {
-  position: 'absolute',
-  left: 14,
-  top: '50%',
-  transform: [{ translateY: -9 }],
-  zIndex: 10,
-},
-
-searchInput: {
-  borderRadius: 20,
-  paddingVertical: 15,
-  paddingLeft: 40,
-  paddingRight: 14,
-  backgroundColor: 'rgba(0,0,0,0.25)',
-  color: '#fff',
-  fontSize: 14,
-},
-
+    marginBottom: 10,
+    marginHorizontal: 8,
+    position: 'relative',
+  },
+  searchIcon: {
+    position: 'absolute',
+    left: 14,
+    top: '50%',
+    transform: [{ translateY: -9 }],
+    zIndex: 10,
+  },
+  searchInput: {
+    borderRadius: 20,
+    paddingVertical: 15,
+    paddingLeft: 40,
+    paddingRight: 14,
+    backgroundColor: 'rgba(0,0,0,0.25)',
+    color: '#fff',
+    fontSize: 14,
+  },
 });
-

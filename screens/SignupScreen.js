@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Alert, ActivityIndicator } from 'react-native';
 
-//layout imports
 import AppButton from '../components/layout/WelcomeScreenLayout/AppButton';
 import AuthHeader from '../components/layout/SignUpScreenLayout/AuthHeader';
 import AuthCard from '../components/layout/SignUpScreenLayout/AuthCard';
@@ -9,14 +8,14 @@ import AuthSwitch from '../components/layout/SignUpScreenLayout/AuthSwitch';
 import FormField from '../components/layout/SignUpScreenLayout/FormField';
 import TermsCheckbox from '../components/layout/SignUpScreenLayout/TermsCheckbox';
 import BottomAuthText from '../components/layout/SignUpScreenLayout/BottomAuthText';
-import Constants from "expo-constants";
+import Constants from 'expo-constants';
 import palette from '../components/colors/palette';
 
 const API_BASE_URL = Constants.expoConfig.extra.apiBaseUrl;
-
 const CREATE_USER_URL = `${API_BASE_URL}/api/User`;
 
 export default function SignupScreen({ navigation }) {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -24,7 +23,7 @@ export default function SignupScreen({ navigation }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSignup = async () => {
-    if (!email || !password || !confirmPassword) {
+    if (!username || !email || !password || !confirmPassword) {
       Alert.alert('Fejl', 'Alle felter skal udfyldes.');
       return;
     }
@@ -45,9 +44,9 @@ export default function SignupScreen({ navigation }) {
 
     try {
       const body = {
-        username: email.split('@')[0],
-        email,
-        password,
+        userName: username,
+        email: email,
+        password: password,
       };
 
       const response = await fetch(CREATE_USER_URL, {
@@ -95,8 +94,16 @@ export default function SignupScreen({ navigation }) {
         />
 
         <FormField
+          label="Brugernavn"
+          placeholder="Vælg et brugernavn"
+          value={username}
+          onChangeText={setUsername}
+          autoCapitalize="none"
+        />
+
+        <FormField
           label="Email"
-          placeholder="your@email.com"
+          placeholder="Din@email.com"
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
